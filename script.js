@@ -62,16 +62,16 @@ var flipCard = function(card){
 }
 
 function compareCards(){
+	// when cards match
   if (clicked[0] === clicked[1]){
-    // $("[src='"+clicked[0]+"']").animate({
-    //     left: '250px',
-    //     height: '0',
-    //     width: '0',
-    //     // transform: "(540deg)" // add rotation here
-    // });
-    // you can animate with jQuery's animate but lets test with animate.css
-    // debugger
-    $("[src='"+clicked[0]+"']").parent().addClass("rotateOut");
+    
+    $("[src='"+clicked[0]+"']").animate({  borderSpacing: -90 }, {
+    step: function(now,fx) {
+      $(this).css('transform','rotate('+now+'deg)');  
+    },
+    duration:'slow'
+}	,'linear');
+    
     clicks = 0;
     clicked = [];
   } else {
